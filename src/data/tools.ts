@@ -3,7 +3,7 @@ export interface Tool {
   title: string;
   description: string;
   href: string;
-  category: "Text" | "Calculator" | "Developer" | "Security" | "Other";
+  category: "Text" | "Calculator" | "Developer" | "Security" | "Image" | "Other";
 }
 
 export const tools: Tool[] = [
@@ -97,5 +97,12 @@ export const tools: Tool[] = [
     description: "Format HTML, CSS, and JSON code.",
     href: "/tools/code-formatter",
     category: "Developer",
+  },
+  {
+    id: "object-remover",
+    title: "Unwanted Object Remover",
+    description: "Remove unwanted objects from images using a magic eraser.",
+    href: "/tools/object-remover",
+    category: "Image",
   },
 ];

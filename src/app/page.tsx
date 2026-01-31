@@ -37,7 +37,7 @@ export default function Home() {
           Yuggu <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Tools</span>
         </h1>
         <p className="max-w-2xl mx-auto text-xl text-gray-600 animate-fade-in-up delay-100">
-          Supercharge your workflow with our collection of <span className="font-semibold text-gray-900">fast</span>, <span className="font-semibold text-gray-900">private</span>, and <span className="font-semibold text-gray-900">free</span> web tools.
+          Supercharge your workflow with our organized collection of <span className="font-semibold text-gray-900">fast</span>, <span className="font-semibold text-gray-900">private</span>, and <span className="font-semibold text-gray-900">free</span> web tools.
         </p>
         <div className="pt-4  animate-fade-in-up delay-200">
            <a href="#tools-grid" className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-transform hover:scale-105 shadow-lg shadow-blue-500/30">
@@ -46,24 +46,34 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="tools-grid" className="scroll-mt-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tools.map((tool, index) => (
-            <div 
-                key={tool.id} 
-                data-id={tool.id}
-                className={`tool-card-animate transition-all duration-700 transform ${visibleTools.has(tool.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-                style={{ transitionDelay: `${index * 50}ms` }}
-            >
-                <ToolCard
-                  title={tool.title}
-                  description={tool.description}
-                  href={tool.href}
-                  category={tool.category}
-                />
-            </div>
-          ))}
-        </div>
+      <section id="tools-grid" className="scroll-mt-20 space-y-16">
+        {["Text", "Calculator", "Developer", "Security"].map((category) => {
+            const categoryTools = tools.filter(t => t.category === category);
+            if (categoryTools.length === 0) return null;
+
+            return (
+                <div key={category} className="space-y-6">
+                    <h2 className="text-2xl font-bold text-gray-800 border-b border-gray-200 pb-2">{category} Tools</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {categoryTools.map((tool, index) => (
+                        <div 
+                            key={tool.id} 
+                            data-id={tool.id}
+                            className={`tool-card-animate transition-all duration-700 transform ${visibleTools.has(tool.id) ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+                            style={{ transitionDelay: `${index * 50}ms` }}
+                        >
+                            <ToolCard
+                              title={tool.title}
+                              description={tool.description}
+                              href={tool.href}
+                              category={tool.category}
+                            />
+                        </div>
+                      ))}
+                    </div>
+                </div>
+            );
+        })}
       </section>
     </div>
   );

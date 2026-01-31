@@ -9,6 +9,7 @@ export default function LoanCalculatorPage() {
   const [amount, setAmount] = useState("");
   const [rate, setRate] = useState("");
   const [term, setTerm] = useState(""); // Years
+  const [currency, setCurrency] = useState("USD");
   const [result, setResult] = useState<{ monthly: string; total: string; interest: string } | null>(null);
 
   const calculateLoan = () => {
@@ -23,10 +24,15 @@ export default function LoanCalculatorPage() {
     const totalPayment = monthlyPayment * n;
     const totalInterest = totalPayment - p;
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: currency,
+    });
+
     setResult({
-      monthly: monthlyPayment.toFixed(2),
-      total: totalPayment.toFixed(2),
-      interest: totalInterest.toFixed(2),
+      monthly: formatter.format(monthlyPayment),
+      total: formatter.format(totalPayment),
+      interest: formatter.format(totalInterest),
     });
   };
 
@@ -37,6 +43,7 @@ export default function LoanCalculatorPage() {
       category="Calculators"
       howToUse={
         <ul className="list-disc pl-5 space-y-2">
+          <li>Select your currency.</li>
           <li>Enter the total loan amount.</li>
           <li>Enter the annual interest rate (e.g., 5.5 for 5.5%).</li>
           <li>Enter the loan term in years (e.g., 30 for a standard mortgage).</li>
@@ -46,8 +53,24 @@ export default function LoanCalculatorPage() {
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Currency</label>
+            <select 
+                value={currency} 
+                onChange={(e) => setCurrency(e.target.value)}
+                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+                <option value="USD">USD ($)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="GBP">GBP (£)</option>
+                <option value="INR">INR (₹)</option>
+                <option value="JPY">JPY (¥)</option>
+                <option value="CAD">CAD ($)</option>
+                <option value="AUD">AUD ($)</option>
+            </select>
+          </div>
           <Input
-            label="Loan Amount ($)"
+            label={`Loan Amount (${currency})`}
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
@@ -82,16 +105,16 @@ export default function LoanCalculatorPage() {
             <>
               <div>
                 <dt className="text-sm font-medium text-gray-500">Monthly Payment</dt>
-                <dd className="text-4xl font-extrabold text-blue-600">${result.monthly}</dd>
+                <dd className="text-4xl font-extrabold text-blue-600">{result.monthly}</dd>
               </div>
               <div className="pt-4 border-t border-gray-200 grid grid-cols-2 gap-4">
                 <div>
                   <dt className="text-xs font-medium text-gray-500 uppercase">Total Interest</dt>
-                  <dd className="text-lg font-bold text-gray-900">${result.interest}</dd>
+                  <dd className="text-lg font-bold text-gray-900">{result.interest}</dd>
                 </div>
                 <div>
                   <dt className="text-xs font-medium text-gray-500 uppercase">Total Repayment</dt>
-                  <dd className="text-lg font-bold text-gray-900">${result.total}</dd>
+                  <dd className="text-lg font-bold text-gray-900">{result.total}</dd>
                 </div>
               </div>
             </>
