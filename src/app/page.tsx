@@ -47,7 +47,7 @@ export default function Home() {
       </section>
 
       <section id="tools-grid" className="scroll-mt-20 space-y-16">
-        {["Text", "Calculator", "Developer", "Security"].map((category) => {
+        {["Text", "Calculator", "Developer", "Security", "Image"].map((category) => {
             const categoryTools = tools.filter(t => t.category === category);
             if (categoryTools.length === 0) return null;
 
