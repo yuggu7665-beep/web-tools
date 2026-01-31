@@ -39,45 +39,52 @@ if __name__ == "__main__":
 `;
 
 export default function BackgroundRemoverPage() {
-  const copyCode = () => {
-    navigator.clipboard.writeText(PYTHON_SCRIPT);
-    alert("Code copied to clipboard!");
-  };
-
-  const downloadScript = () => {
+  const downloadGUI = () => {
     const element = document.createElement("a");
-    const file = new Blob([PYTHON_SCRIPT], {type: 'text/plain'});
-    element.href = URL.createObjectURL(file);
-    element.download = "background_remover.py";
+    element.href = "/python-tools/background_remover_gui.py";
+    element.download = "background_remover_gui.py";
     document.body.appendChild(element);
     element.click();
+    document.body.removeChild(element);
   };
 
   return (
     <ToolPageLayout
       title="AI Background Remover (Python)"
-      description="An advanced python utility to automatically remove image backgrounds using AI."
+      description="Download a working Python GUI program to remove image backgrounds using AI."
       category="Image"
     >
       <div className="space-y-6">
-        <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 p-6 rounded-xl">
-            <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-2">🚀 How to run this tool</h3>
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border border-blue-200 dark:border-blue-800 p-6 rounded-xl">
+            <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-3">🚀 Working GUI Program</h3>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">
+              This is a complete, working Python application with a graphical interface. Just download and run!
+            </p>
+            <Button onClick={downloadGUI} className="w-full sm:w-auto">
+              📥 Download GUI Program (.py)
+            </Button>
+        </div>
+
+        <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-6 rounded-xl">
+            <h3 className="text-lg font-semibold text-amber-900 dark:text-amber-100 mb-2">📋 Installation Steps</h3>
             <ol className="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-300">
-                <li>Install Python (3.8 or higher)</li>
-                <li>Install dependencies: <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">pip install rembg pillow</code></li>
-                <li>Run the script: <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">python background_remover.py input.jpg output.png</code></li>
+                <li>Install Python (3.8 or higher) from <a href="https://python.org" className="text-blue-600 dark:text-blue-400 underline" target="_blank" rel="noopener noreferrer">python.org</a></li>
+                <li>Install dependencies: <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm">pip install rembg pillow</code></li>
+                <li>Download the GUI program above</li>
+                <li>Run: <code className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-sm">python background_remover_gui.py</code></li>
             </ol>
         </div>
 
-        <div className="flex gap-4">
-             <Button onClick={downloadScript}>Download Script (.py)</Button>
-             <Button variant="outline" onClick={copyCode}>Copy Code</Button>
-        </div>
-
-        <div className="relative">
-            <pre className="p-4 bg-gray-900 text-gray-100 rounded-xl overflow-x-auto text-sm font-mono border border-gray-800">
-                <code>{PYTHON_SCRIPT}</code>
-            </pre>
+        <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-6 rounded-xl">
+            <h3 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-2">✨ Features</h3>
+            <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
+                <li>Beautiful dark-themed GUI interface</li>
+                <li>Select any image (PNG, JPG, WEBP)</li>
+                <li>AI-powered background removal using U^2-Net</li>
+                <li>Preview results before saving</li>
+                <li>Save with transparent background (PNG)</li>
+                <li>100% offline - no internet required after installation</li>
+            </ul>
         </div>
       </div>
     </ToolPageLayout>

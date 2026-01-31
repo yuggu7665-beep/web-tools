@@ -11,21 +11,21 @@ export function ToolCard({ title, description, href, category }: ToolCardProps) 
   return (
     <Link
       href={href}
-      className="group block p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 hover:border-blue-200"
+      className="group block p-6 bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md dark:hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-600"
     >
       <div className="flex flex-col h-full">
         {category && (
-          <span className="text-xs font-semibold text-blue-500 uppercase tracking-wider mb-2">
+          <span className="text-xs font-semibold text-blue-500 dark:text-blue-400 uppercase tracking-wider mb-2">
             {category}
           </span>
         )}
-        <h3 className="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
           {title}
         </h3>
-        <p className="mt-2 text-gray-600 text-sm flex-grow">
+        <p className="mt-2 text-gray-600 dark:text-gray-300 text-sm flex-grow">
           {description}
         </p>
-        <div className="mt-4 flex items-center text-blue-600 font-medium text-sm group-hover:translate-x-1 transition-transform">
+        <div className="mt-4 flex items-center text-blue-600 dark:text-blue-400 font-medium text-sm group-hover:translate-x-1 transition-transform">
           Use Tool
           <svg
             className="w-4 h-4 ml-1"
