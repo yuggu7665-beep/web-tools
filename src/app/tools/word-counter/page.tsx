@@ -35,8 +35,8 @@ export default function WordCounterPage() {
           <li>Type or paste your text into the large text area.</li>
           <li>The statistics above the text area will update automatically as you type.</li>
           <li>You can see the count/number of words, characters (with and without spaces), sentences, and paragraphs.</li>
-          <li>Use the "Copy Text" button to copy the content to your clipboard.</li>
-          <li>Use the "Clear" button to start over.</li>
+          <li>Use the &quot;Copy Text&quot; button to copy the content to your clipboard.</li>
+          <li>Use the &quot;Clear&quot; button to start over.</li>
         </ul>
       }
     >

@@ -1,33 +1,26 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { ToolPageLayout } from "@/components/ToolPageLayout";
-// Note: We use require here to avoid some strict ESM/TS issues in client components if standard import fails, 
-// but let's try standard import first. Actually, crypto-js types need to be installed or require used. 
-// Just using dynamic import or simple require style for ease.
-import CryptoJS from "crypto-js"; 
+  import { useState, useMemo } from "react";
+  import { ToolPageLayout } from "@/components/ToolPageLayout";
+  // Note: We use require here to avoid some strict ESM/TS issues in client components if standard import fails, 
+  // but let's try standard import first. Actually, crypto-js types need to be installed or require used. 
+  // Just using dynamic import or simple require style for ease.
+  import CryptoJS from "crypto-js"; 
 
-export default function HashGeneratorPage() {
-  const [input, setInput] = useState("");
-  const [hashes, setHashes] = useState({
-      md5: "",
-      sha1: "",
-      sha256: "",
-      sha512: ""
-  });
-
-  useEffect(() => {
-      if (!input) {
-          setHashes({ md5: "", sha1: "", sha256: "", sha512: "" });
-          return;
-      }
-      setHashes({
-          md5: CryptoJS.MD5(input).toString(),
-          sha1: CryptoJS.SHA1(input).toString(),
-          sha256: CryptoJS.SHA256(input).toString(),
-          sha512: CryptoJS.SHA512(input).toString(),
-      });
-  }, [input]);
+  export default function HashGeneratorPage() {
+    const [input, setInput] = useState("");
+    
+    const hashes = useMemo(() => {
+        if (!input) {
+            return { md5: "", sha1: "", sha256: "", sha512: "" };
+        }
+        return {
+            md5: CryptoJS.MD5(input).toString(),
+            sha1: CryptoJS.SHA1(input).toString(),
+            sha256: CryptoJS.SHA256(input).toString(),
+            sha512: CryptoJS.SHA512(input).toString(),
+        };
+    }, [input]);
 
   return (
     <ToolPageLayout

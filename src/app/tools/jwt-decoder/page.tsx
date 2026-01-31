@@ -56,18 +56,18 @@ export default function JwtDecoderPage() {
         
         {error && <p className="text-red-500 font-medium">{error}</p>}
 
-        {decodedHeader && decodedPayload && (
+        {!!decodedHeader && !!decodedPayload && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                     <h3 className="font-bold text-gray-700">Header</h3>
                     <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 overflow-auto text-sm font-mono text-gray-800">
-                        {JSON.stringify(decodedHeader, null, 2)}
+                        {JSON.stringify(decodedHeader as any, null, 2) || ""}
                     </pre>
                 </div>
                 <div className="space-y-2">
                     <h3 className="font-bold text-gray-700">Payload</h3>
                      <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 overflow-auto text-sm font-mono text-blue-800">
-                        {JSON.stringify(decodedPayload, null, 2)}
+                        {JSON.stringify(decodedPayload as any, null, 2) || ""}
                     </pre>
                 </div>
             </div>

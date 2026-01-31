@@ -69,8 +69,8 @@ export default function CaseConverterPage() {
         <ul className="list-disc pl-5 space-y-2">
           <li>Enter your text in the text area below.</li>
           <li>Click any of the buttons to instantly convert the text to that format.</li>
-          <li>Use "Sentence Case" for standard writing capitalization.</li>
-          <li>Use "Title Case" for headlines.</li>
+          <li>Use &quot;Sentence Case&quot; for standard writing capitalization.</li>
+          <li>Use &quot;Title Case&quot; for headlines.</li>
           <li>Developer formats like Camel, Snake, and Kebab case are also available.</li>
         </ul>
       }

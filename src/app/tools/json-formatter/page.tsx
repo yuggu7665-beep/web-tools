@@ -30,8 +30,8 @@ export default function JsonFormatterPage() {
       howToUse={
          <ul className="list-disc pl-5 space-y-2">
           <li>Paste your JSON code into the editor.</li>
-          <li>Click "Prettify" to format it with indentation (human readable).</li>
-          <li>Click "Minify" to remove all whitespace (machine readable).</li>
+          <li>Click &quot;Prettify&quot; to format it with indentation (human readable).</li>
+          <li>Click &quot;Minify&quot; to remove all whitespace (machine readable).</li>
           <li>If the JSON is invalid, an error message will appear explaining why.</li>
         </ul>
       }

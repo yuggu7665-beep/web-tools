@@ -36,8 +36,8 @@ export default function RemoveSpacesPage() {
         <ul className="list-disc pl-5 space-y-2">
           <li>Paste your messy text into the box.</li>
           <li><strong>Trim Only:</strong> Removes spaces from the start and end of each line description.</li>
-          <li><strong>Remove Extra Spaces:</strong> Turns "Hello   World" into "Hello World".</li>
-          <li><strong>Remove All Spaces:</strong> Turns "Hello World" into "HelloWorld".</li>
+          <li><strong>Remove Extra Spaces:</strong> Turns &quot;Hello   World&quot; into &quot;Hello World&quot;.</li>
+          <li><strong>Remove All Spaces:</strong> Turns &quot;Hello World&quot; into &quot;HelloWorld&quot;.</li>
           <li><strong>Remove Line Breaks:</strong> Joins all lines into a single long string.</li>
         </ul>
       }
