@@ -3,6 +3,9 @@
 import { ToolCard } from "@/components/ToolCard";
 import { tools } from "@/data/tools";
 import { useEffect, useRef, useState } from "react";
+import { ParticlesBackground } from "@/components/ParticlesBackground";
+import { TypewriterSearch } from "@/components/TypewriterSearch";
+
 
 export default function Home() {
   // Simple intersection observer logic for scroll reveal
@@ -29,18 +32,25 @@ export default function Home() {
 
   return (
     <div className="space-y-16">
-      <section className="text-center space-y-6 py-20 min-h-[60vh] flex flex-col justify-center items-center relative overflow-hidden">
-         {/* Background decoration */}
-         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-100/50 rounded-full blur-3xl -z-10 opacity-60 pointer-events-none" />
+      <ParticlesBackground />
+      <section className="text-center space-y-6 py-20 min-h-[60vh] flex flex-col justify-center items-center relative overflow-hidden z-10">
+         {/* Background decoration - subtle glow behind text for readability */}
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-blue-900/30 rounded-full blur-3xl -z-10 pointer-events-none" />
          
-        <h1 className="text-5xl sm:text-7xl font-extrabold text-gray-900 tracking-tight animate-fade-in-up">
-          Yuggu <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Tools</span>
+        <h1 className="text-5xl sm:text-7xl font-extrabold text-white tracking-tight animate-fade-in-up drop-shadow-2xl">
+          Yuggu <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Tools</span>
         </h1>
-        <p className="max-w-2xl mx-auto text-xl text-gray-600 animate-fade-in-up delay-100">
-          Supercharge your workflow with our organized collection of <span className="font-semibold text-gray-900">fast</span>, <span className="font-semibold text-gray-900">private</span>, and <span className="font-semibold text-gray-900">free</span> web tools.
+
+        <p className="max-w-2xl mx-auto text-xl text-gray-200 animate-fade-in-up delay-100 drop-shadow-md pb-8">
+          Supercharge your workflow with our organized collection of <span className="font-bold text-white">fast</span>, <span className="font-bold text-white">private</span>, and <span className="font-bold text-white">free</span> web tools.
         </p>
-        <div className="pt-4  animate-fade-in-up delay-200">
-           <a href="#tools-grid" className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-transform hover:scale-105 shadow-lg shadow-blue-500/30">
+
+        <div className="w-full px-4 animate-fade-in-up delay-150 mb-8">
+             <TypewriterSearch />
+        </div>
+
+        <div className="pt-2 animate-fade-in-up delay-200">
+           <a href="#tools-grid" className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10 transition-transform hover:scale-105 shadow-xl shadow-blue-500/20 backdrop-blur-sm">
              Explore Tools
            </a>
         </div>

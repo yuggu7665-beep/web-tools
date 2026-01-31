@@ -13,45 +13,53 @@ export const metadata: Metadata = {
   },
 };
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
+// ... metadata ...
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} min-h-screen bg-gray-50 text-gray-900`}>
-        <header className="bg-white shadow-sm sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16 items-center">
-              <div className="flex-shrink-0">
-                <Link href="/" className="text-2xl font-extrabold text-blue-600 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-                  Yuggu Tools
-                </Link>
-              </div>
-              <nav className="flex space-x-4">
-                <Link href="/" className="text-gray-600 hover:text-blue-600 transition-colors px-3 py-2 rounded-md text-sm font-medium">
-                  Home
-                </Link>
-                <Link href="/tools" className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                  Tools
-                </Link>
-              </nav>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300`}>
+        <ThemeProvider>
+            <header className="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-50 transition-colors duration-300">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between h-16 items-center">
+                <div className="flex-shrink-0">
+                    <Link href="/" className="text-2xl font-extrabold text-blue-600 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+                    Yuggu Tools
+                    </Link>
+                </div>
+                <nav className="flex items-center space-x-4">
+                    <Link href="/" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors px-3 py-2 rounded-md text-sm font-medium">
+                    Home
+                    </Link>
+                    <Link href="/tools" className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium">
+                    Tools
+                    </Link>
+                    <ThemeToggle />
+                </nav>
+                </div>
             </div>
-          </div>
-        </header>
+            </header>
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {children}
-        </main>
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            {children}
+            </main>
 
-        <footer className="bg-white border-t border-gray-200 mt-auto">
-          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-gray-500 text-sm">
-              &copy; {new Date().getFullYear()} Yuggu Tools. All rights reserved.
-            </p>
-          </div>
-        </footer>
+            <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 mt-auto transition-colors duration-300">
+            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <p className="text-center text-gray-500 dark:text-gray-400 text-sm">
+                &copy; {new Date().getFullYear()} Yuggu Tools. All rights reserved.
+                </p>
+            </div>
+            </footer>
+        </ThemeProvider>
       </body>
     </html>
   );
