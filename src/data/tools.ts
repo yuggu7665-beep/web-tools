@@ -70,4 +70,32 @@ export const tools: Tool[] = [
     href: "/tools/hash-generator",
     category: "Security",
   },
+  {
+    id: "regex-tester",
+    title: "Regex Tester",
+    description: "Test regular expressions against text patterns.",
+    href: "/tools/regex-tester",
+    category: "Developer",
+  },
+  {
+    id: "jwt-decoder",
+    title: "JWT Decoder",
+    description: "Decode and inspect JSON Web Tokens (client-side).",
+    href: "/tools/jwt-decoder",
+    category: "Developer",
+  },
+  {
+    id: "api-tester",
+    title: "API Tester",
+    description: "Send HTTP requests to test REST APIs.",
+    href: "/tools/api-tester",
+    category: "Developer",
+  },
+  {
+    id: "code-formatter",
+    title: "Code Formatter",
+    description: "Format HTML, CSS, and JSON code.",
+    href: "/tools/code-formatter",
+    category: "Developer",
+  },
 ];
