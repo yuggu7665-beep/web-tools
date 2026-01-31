@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Web Tools Platform
 
-## Getting Started
+A premium, client-side-first web tools platform consisting of multiple utility tools (calculators, text tools, developer tools, etc.) hosted on Vercel, with GitHub as the single source of truth.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Text Tools**: Word Counter, Case Converter, Remove Spaces
+- **Calculators**: Percentage, Loan, Profit/Loss
+- **Developer Tools**: JSON Formatter
+- **Security**: Password Generator, Hash Generator (SHA-256, MD5)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 14+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Deployment**: Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Local Development
 
-## Learn More
+1.  **Clone the repository** (if not already local):
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    git clone <your-repo-url>
+    cd web-tools
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2.  **Install dependencies**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    npm install
+    ```
 
-## Deploy on Vercel
+3.  **Run the development server**:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm run dev
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Deployment
+
+This project is designed to be deployed on Vercel.
+
+1.  Push your code to a GitHub repository.
+2.  Import the project in Vercel.
+3.  Vercel will detect the Next.js framework and configure the build settings automatically.
+4.  Deploy!
+
+Any changes pushed to the `main` branch will automatically trigger a redeployment.
+
+## Project Structure
+
+- `src/app`: App Router pages and layouts.
+- `src/components`: Reusable UI components.
+- `src/data`: Static data (e.g., list of tools).
+- `src/lib`: Utility functions.
+
+## Adding a New Tool
+
+1.  Create a new folder in `src/app/tools/[tool-name]`.
+2.  Create a `page.tsx` file in that folder.
+3.  Use the `<ToolPageLayout>` component to wrap your tool content.
+4.  Add the tool metadata to `src/data/tools.ts` to make it appear on the landing page.
