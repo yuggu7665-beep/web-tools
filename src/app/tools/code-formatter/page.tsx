@@ -19,6 +19,7 @@ export default function CodeFormatterPage() {
         try {
             formatted = JSON.stringify(JSON.parse(code), null, 2);
         } catch {
+            alert("Invalid JSON code");
             formatted = code; // Fallback
         }
     } else {
@@ -79,14 +80,17 @@ export default function CodeFormatterPage() {
                  </select>
                  <Button onClick={format}>Format Code</Button>
              </div>
-             <Button variant="outline" onClick={() => setCode("")}>Clear</Button>
+             <div className="flex gap-2">
+                <Button variant="outline" onClick={() => setCode("")}>Clear</Button>
+                <Button onClick={() => navigator.clipboard.writeText(code)}>Copy</Button>
+             </div>
         </div>
 
         <textarea
             value={code}
             onChange={(e) => setCode(e.target.value)}
             placeholder={`<!-- Paste your ${language.toUpperCase()} code here -->`}
-            className="w-full h-[500px] p-4 rounded-lg border border-gray-300 font-mono text-sm leading-relaxed resize-y focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full min-h-[400px] p-4 rounded-lg border border-gray-300 font-mono text-sm leading-relaxed resize-y focus:ring-2 focus:ring-blue-500 outline-none"
             spellCheck={false}
         />
       </div>

@@ -47,7 +47,7 @@ export default function RemoveSpacesPage() {
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Paste text here..."
-            className="w-full h-48 p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y font-mono text-sm sm:text-base"
+            className="w-full min-h-[400px] p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y font-mono text-sm sm:text-base"
         />
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
